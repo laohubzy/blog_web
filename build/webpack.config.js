@@ -1,7 +1,6 @@
-// import utils from './util/index';
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const EslintFriendlyFormatter = require('eslint-friendly-formatter');
-const utils = require('./util/index');
 // console.log('__dirname:', __dirname);
 // console.log('resolve:', resolve('../'));
 // console.log('join:--:', join('../'));
@@ -13,10 +12,10 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map', // 开发环境配置
   // devtool:'cheap-module-source-map',   // 线上生成配置
 
-  entry: utils.resolve('../src/index.js'),
+  entry: path.resolve('src/index.js'),
   output: {
     // 输出目录
-    path: utils.resolve('../dist'),
+    path: path.resolve('dist'),
     // 文件名称
     filename: 'bundle.js',
   },
@@ -39,24 +38,21 @@ module.exports = {
     },
   },
   resolve: {
-    extension: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
     alias: {
-      '@': utils.resolve(__dirname, 'src'),
-      '@pages': utils.resolve(__dirname, __dirname, 'src/pages'),
-      '@router': utils.resolve(__dirname, 'src/router'),
+      '@': path.resolve('src'),
+      '@pages': path.resolve('src/pages'),
+      '@router': path.resolve('src/router'),
+      '@images': path.resolve('src/images'),
+      '@utils': path.resolve('src/utils'),
     },
   },
   module: {
     rules: [
       {
-        test: /\.js$/, // 一个匹配loaders所处理的文件的拓展名的正则表达式，这里用来匹配js和jsx文件（必须）
-        exclude: /node_modules/, // 屏蔽不需要处理的文件（文件夹）（可选）
-        loader: 'babel-loader', // loader的名称（必须）
-      },
-      {
-        test: /\.jsx$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: ['babel-loader', 'react'],
+        loader: ['babel-loader'],
       },
       {
         test: /\.css$/,
@@ -104,7 +100,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
-        include: [utils.resolve(__dirname, 'src')], // 指定检查的目录
+        include: [path.resolve(__dirname, 'src')], // 指定检查的目录
         options: { // 这里的配置项参数将会被传递到 eslint 的 CLIEngine
           formatter: EslintFriendlyFormatter, // 指定错误报告的格式规范
         },
@@ -113,8 +109,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: utils.resolve('../dist/index.html'), // html模板的生成路径
-      template: utils.resolve('../src/index.html'), // html模板
+      filename: path.resolve('dist/index.html'), // html模板的生成路径
+      template: path.resolve('src/index.html'), // html模板
       inject: true, // true：默认值，script标签位于html文件的 body 底部
       hash: true, // 在打包的资源插入html会加上hash
       //  html 文件进行压缩
@@ -128,7 +124,7 @@ module.exports = {
   ],
   devServer: {
     hot: true, //
-    contentBase: utils.resolve('../dist'),
+    contentBase: path.resolve('dist'),
     host: '0.0.0.0', // 可以使用手机访问
     port: 8080,
     historyApiFallback: true, // 该选项的作用所有的404都连接到index.html

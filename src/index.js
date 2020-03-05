@@ -1,11 +1,15 @@
 import React from 'react';
-// import Router from './router';
 import ReactDOM from 'react-dom';
-import Home from './pages/home/home';
-// const name = 'Josh Perez';
-// const element = <h1>Hello, {name}</h1>;
+import App from '@pages/App';
+
+const path = require('path');
+
 
 ReactDOM.render(
-  <Home />,
+  <App />,
   document.getElementById('root'),
 );
+
+console.log(path.resolve('src/pages'));
+console.log(path.resolve(__dirname, 'src/pages'));
+console.log(__dirname);

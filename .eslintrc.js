@@ -20,5 +20,7 @@ module.exports = {
         'semi': ['error', 'always'],
         'arrow-parens': 0,
         'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }],
+        'import/no-unresolved': [0, { 'extensions': ['.js', '.jsx'] }],
+        'import/extensions': [0, { 'extensions': ['.js', '.jsx'] }]
     }
 }
