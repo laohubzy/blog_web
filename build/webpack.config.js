@@ -45,6 +45,7 @@ module.exports = {
       '@router': path.resolve('src/router'),
       '@images': path.resolve('src/images'),
       '@utils': path.resolve('src/utils'),
+      '@components': path.resolve('src/components'),
     },
   },
   module: {
@@ -66,7 +67,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.less$/,
+        test: /\.scss$/,
         use: [
           {
             loader: 'style-loader',
@@ -75,7 +76,7 @@ module.exports = {
             loader: 'css-loader',
           },
           {
-            loader: 'less-loader', // 编译 Less -> CSS
+            loader: 'sass-loader', // 编译 Scss -> CSS
           },
         ],
       },

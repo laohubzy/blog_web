@@ -1,7 +1,13 @@
 import React from 'react';
+// import NavigationBar from '../../components/navigationBar/NavigationBar';
+import './style/home.scss';
 
-export default () => (
-  <div>
-    Hello
-  </div>
-);
+const Home = () => {
+  console.log('x');
+  return (
+    // <NavigationBar />
+    <div>home</div>
+  );
+};
+
+export default Home;

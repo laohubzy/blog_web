@@ -1,0 +1,18 @@
+.navigation-bar {
+    .logo {
+        font-weight: 400;
+        font-size: 20px;
+        margin-right: 60px;
+        margin-top: 20;
+    }
+    .list-item {
+        font-size: 16px;
+        font-weight: lighter;
+        margin-right: 30px; 
+        cursor: pointer;    
+    }
+    .active {
+        font-weight: normal;
+        color: lightblue;
+    }
+}
