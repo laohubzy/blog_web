@@ -7,8 +7,8 @@ import routes from '@router/index.js';
 const NavigationBar = ({ history }) => {
   const [hideBar, setHideBar] = useState(false);
   const [currRoute, setCurrRoute] = useState({});
-
-
+  const [hideSearch, setHideSearch] = useState(true);
+  const [lineStyle, setLineStyle] = useState({});
 
   const isActive = (item) => {
     if (currRoute.path === item.path) {
@@ -17,21 +17,37 @@ const NavigationBar = ({ history }) => {
     return '';
   };
 
-  const changeRoute = (item) => {
-    // const path = history.location.pathname;
-    console.log(item);
-    setHideBar(item.hideBar);
-    setCurrRoute(item);
-    history.push(item.path);
-  };
-
-  useEffect(() => {
+  const changeRoute = () => {
     const path = history.location.pathname;
     const item = routes[0].children.find(i => (path === '/' && i.path === '/home') || path === i.path);
     if (item) {
       setHideBar(item.hideBar);
       setCurrRoute(item);
     }
+  };
+
+  const setLinePosition = (item, e) => {
+    const target = item ? e.target : document.querySelector(`#${currRoute.path}`);
+    setLineStyle({
+      left: target.offsetLeft,
+      width: target.clientWidth,
+    });
+  };
+
+  const clickBar = (item, e) => {
+    console.log(e.target.clientWidth);
+    console.log(e.target.offsetTop);
+    console.log(e.target.offsetLeft);
+    setLinePosition(item, e);
+    history.push(item.path);
+  };
+
+  useEffect(() => {
+    changeRoute();
+    // setLinePosition();
+    history.listen(() => {
+      changeRoute();
+    });
   }, []);
 
   return (
@@ -43,13 +59,24 @@ const NavigationBar = ({ history }) => {
             <div className="bar-item-list flex-center">
               { routes[0].children.map((i) => (
                 <div
-                  onClick={() => changeRoute(i)}
+                  id={i.path}
                   className={`list-item ${isActive(i)}`}
+                  onClick={(e) => { clickBar(i, e); }}
                   key={i.path}
                 >
                   {i.title}
                 </div>
               ))}
+              <div className="bar-line" style={lineStyle}/>
+            </div>
+            <div className="search-icon">
+              <i className="iconfont">&#xe60d;</i>
+              <div className={`search-input ${hideSearch ? 'input-blur' : 'input-foucs'}`}>
+                <input
+                  onFocus={() => { setHideSearch(false); }}
+                  onBlur={() => { setHideSearch(true); }}
+                />
+              </div>
             </div>
           </div>
         )}

@@ -4,10 +4,10 @@ import { renderRoutes } from 'react-router-config';
 import { BrowserRouter, Switch } from 'react-router-dom';
 
 
-import routes from '../router';
+import routes from '@router';
 
-import '../style/common.css';
-import '../style/reset.css';
+
+import '@style/index.scss';
 
 
 export default () => (

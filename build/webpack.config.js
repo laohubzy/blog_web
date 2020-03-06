@@ -46,6 +46,7 @@ module.exports = {
       '@images': path.resolve('src/images'),
       '@utils': path.resolve('src/utils'),
       '@components': path.resolve('src/components'),
+      '@style': path.resolve('src/style'),
     },
   },
   module: {

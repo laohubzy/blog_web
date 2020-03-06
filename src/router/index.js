@@ -24,7 +24,7 @@ const routes = [
         path: '/time',
         title: '时间轴',
         component: Time,
-        hideBar: true,
+        // hideBar: true,
       },
       {
         path: '/about',

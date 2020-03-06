@@ -1,0 +1,11 @@
+
+@import '@style/color.scss';
+
+body {
+    color: $mainTextColor;
+}
+
+a {
+    text-decoration: none;
+    color: $mainTextColor;
+}
