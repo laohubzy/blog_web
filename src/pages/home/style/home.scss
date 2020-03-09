@@ -1,6 +1,33 @@
-.test{
-  background: green;
-  div {
-    color: red;
+.home-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  .head {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    color: white;
+    position: relative;
+    .name {
+      position: relative;
+      top: 42%;
+    }
+    .verse {
+      position: relative;
+      top: 54%;
+    }
+    .more {
+      font-size: 34px;
+      position: absolute;
+      bottom: 30px;
+      animation: moreAnimation 1s alternate ease infinite;
+    }
+    @keyframes moreAnimation
+    {
+      from {bottom: 50px;}
+      to {bottom: 30px;}
+    }
+          
   }
 }

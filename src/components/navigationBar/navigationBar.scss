@@ -11,9 +11,13 @@
         margin-right: 30px; 
         cursor: pointer;
         padding-bottom: 2px;
+        color: white;
+        opacity: 0.8;
     }
     .active {
-        color: lightblue;
+        // color: lightblue;
+        font-weight: bold;
+        opacity: 1;
         transition: all .3s;
     }
     .bar-item-list {
@@ -24,26 +28,33 @@
             width: 20px;
             height: 2px;
             border-radius: 2px;
-            background: $mainThemeColor;
+            background: white;
         }
     }
     .search-icon {
         margin-left: 60px;
+        color: white;
         cursor: pointer;
         position: relative;
-        color: $mainTextColor;
+        color: white;
+        opacity: 0.8;
         .search-input {
             position: absolute;
             bottom: 0;
             left: 18px;
             width: 0;
             overflow: hidden;
-            border-bottom: 1px solid $mainTextColor;
+            border-bottom: 1px solid white;
             transition: width .5s;
+            .iconfont {
+                color: white;
+            }
             input {
+                background: transparent;
                 border: none;
                 outline: none;
                 padding-left: 8px;
+                color: white;
             }
         }
         .input-foucs {

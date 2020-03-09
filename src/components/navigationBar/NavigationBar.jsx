@@ -67,7 +67,7 @@ const NavigationBar = ({ history }) => {
                   {i.title}
                 </div>
               ))}
-              <div className="bar-line" style={lineStyle}/>
+              <div className="bar-line" style={lineStyle} />
             </div>
             <div className="search-icon">
               <i className="iconfont">&#xe60d;</i>
