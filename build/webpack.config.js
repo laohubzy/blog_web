@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const EslintFriendlyFormatter = require('eslint-friendly-formatter');
 // console.log('__dirname:', __dirname);
 // console.log('resolve:', resolve('../'));
@@ -18,13 +19,14 @@ module.exports = {
     path: path.resolve('dist'),
     // 文件名称
     filename: 'bundle.js',
+    chunkFilename: '[id].[chunkhash].js'
   },
-  optimization: {
-    splitChunks: {
-      chunks: 'all', // 所有的 chunks 代码公共的部分分离出来成为一个单独的文件
-    },
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all', // 所有的 chunks 代码公共的部分分离出来成为一个单独的文件
+  //   },
 
-  },
+  // },
   // 警告 webpack 的性能提示
   performance: {
     hints: 'warning',
@@ -123,6 +125,7 @@ module.exports = {
       },
     }),
     // new webpack.HotModuleReplacementPlugin()
+    new CleanWebpackPlugin(),
   ],
   devServer: {
     hot: true, //
